@@ -40,4 +40,35 @@ public class NumberToRomanNumeralsConverterApplication extends WebMvcConfigurerA
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+    
+/*    // you can run this with SSL/TLS. For example, build the application (`mvn clean install`) in the `oauth` directory, then run:
+    //   java -Dspring.profiles.active=production -Dkeystore.file=file:///`pwd`/src/main/resources/keystore.p12 -jar target/number-to-roman-numerals-converter-0.0.1-SNAPSHOT.jar
+    @Bean
+    @Profile("production")
+    EmbeddedServletContainerCustomizer containerCustomizer(
+            @Value("${keystore.file}") Resource keystoreFile,
+            @Value("${keystore.pass}") String keystorePass) throws Exception {
+
+        String absoluteKeystoreFile = keystoreFile.getFile().getAbsolutePath();
+
+        return (ConfigurableEmbeddedServletContainer container) -> {
+            TomcatEmbeddedServletContainerFactory tomcat = (TomcatEmbeddedServletContainerFactory) container;
+            tomcat.addConnectorCustomizers(
+                    (connector) -> {
+                        connector.setPort(8443);
+                        connector.setSecure(true);
+                        connector.setScheme("https");
+
+                        Http11NioProtocol proto = (Http11NioProtocol) connector.getProtocolHandler();
+                        proto.setSSLEnabled(true);
+                        proto.setKeystoreFile(absoluteKeystoreFile);
+                        proto.setKeystorePass(keystorePass);
+                        proto.setKeystoreType("PKCS12");
+                        proto.setKeyAlias("tomcat");
+                    }
+            );
+
+        };
+    }*/
+
 }
