@@ -75,10 +75,23 @@ public class NumberConverterControllerTest {
 		this.mockMvc
 				.perform(post("/convert").param("nashvilleNumber", "-212"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$result[0].defaultMessage", is("Number must be numeric and bigger than zero")));
+				.andExpect(jsonPath("$result[0].defaultMessage", is("Number must be bigger than zero")));
 
 	}
 	
+	/*
+	 * Test for 0
+	 */
+	@Test
+	public void testZeroNumber() throws Exception {
+
+		this.mockMvc
+				.perform(post("/convert").param("nashvilleNumber", "0"))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$result.romanNumeral", is("nulla")));
+
+	}
+
 	/*
 	 * Test for correct input
 	 */

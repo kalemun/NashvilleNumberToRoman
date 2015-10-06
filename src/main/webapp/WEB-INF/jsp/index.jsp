@@ -10,32 +10,32 @@
      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/app.css">
      <script type="text/javascript">
      function doAjaxPost() {
-     // get the form values
-     var nashvilleNumber = $('#nashvilleNumber').val();
-
-     $.ajax({
-     type: "POST",
-     url: "/convert",
-     data: "nashvilleNumber=" + nashvilleNumber,
-     success: function(response){
-    	 console.log(response);
-     	// we have the response
-         if(response.status == "SUCCESS") {
-              $('#romanNumeral').val(response.result.romanNumeral);
-              $('#error').hide('slow');
-          } else {
-              errorInfo = "";
-              for(i =0 ; i < response.result.length ; i++){
-                  errorInfo += "<br>" + (i + 1) +". " + response.result[i].defaultMessage;
-              }
-              $('#error').html("Please correct following errors: " + errorInfo);
-              $('#error').show('slow');
-          }     	
-     },
-     error: function(e){
-     alert('Error: ' + e);
-     }
-     });
+	     // get the form values
+	     var nashvilleNumber = $('#nashvilleNumber').val();
+	
+	     $.ajax({
+	     type: "POST",
+	     url: "/convert",
+	     data: "nashvilleNumber=" + nashvilleNumber,
+	     success: function(response){
+	    	 console.log(response);
+	     	// we have the response
+	         if(response.status == "SUCCESS") {
+	              $('#romanNumeral').val(response.result.romanNumeral);
+	              $('#error').hide('slow');
+	          } else {
+	              errorInfo = "";
+	              for(i =0 ; i < response.result.length ; i++){
+	                  errorInfo += "<br>" + (i + 1) +". " + response.result[i].defaultMessage;
+	              }
+	              $('#error').html("Please correct following errors: " + errorInfo);
+	              $('#error').show('slow');
+	          }     	
+	     },
+	     error: function(e){
+	     	alert('Error: ' + e);
+	     }
+	     });
      }
      </script>
 

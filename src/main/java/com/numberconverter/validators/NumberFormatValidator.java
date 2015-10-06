@@ -38,7 +38,7 @@ public class NumberFormatValidator implements Validator {
 			pattern = Pattern.compile(NUMBER_PATTERN);
 			matcher = pattern.matcher(numberModel.getNashvilleNumber().toString());
 			if (!matcher.matches()) {
-				errors.rejectValue("nashvilleNumber", "nashvilleNumber.incorrect", "Number must be numeric and bigger than zero");
+				errors.rejectValue("nashvilleNumber", "nashvilleNumber.incorrect", "Number must be bigger than zero");
 			}
 		}
 

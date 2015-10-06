@@ -3,6 +3,10 @@ package com.numberconverter.services;
 public class NumberConverterService {
 	
 	public static String intToRoman(int num) {
+		if (0 == num) {
+			return "nulla";
+		}
+		
 	    StringBuilder sb = new StringBuilder();
 	    int times = 0;
 	    String[] romans = new String[] { "I", "IV", "V", "IX", "X", "XL", "L",
