@@ -15,7 +15,7 @@
 
      $.ajax({
      type: "POST",
-     url: "http://localhost:8080/convert",
+     url: "/convert",
      data: "nashvilleNumber=" + nashvilleNumber,
      success: function(response){
     	 console.log(response);
